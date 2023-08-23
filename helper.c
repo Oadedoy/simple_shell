@@ -28,4 +28,5 @@ int print_environment()
         printf("%s\n", *env);
         env++;
     }
+    return (0);
 }

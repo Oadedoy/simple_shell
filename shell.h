@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-#define _DELIMITER " \t\r\n\a\""
+#define _DELIMITER " \t\r\n\a\"\;"
 extern char **environ;
 
 void interactive_shell(void);

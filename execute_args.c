@@ -8,14 +8,16 @@
 
 int execute_args(char **args)
 {
-	char *builtin_func_list[] = {
+	char *builtin_func_list[] =
+	{
 		"cd",
 		"env",
 		"help",
 		"exit",
 	};
-	int (*builtin_func[])(char **) = {        
-        &_cd,
+	int (*builtin_func[])(char **) =
+	{
+		&_cd,
         &_env,
 		&_help,
 		&my_exit,
@@ -33,5 +35,6 @@ int execute_args(char **args)
 			return ((*builtin_func[i])(args));
 		}
 	}
+	
 	return (execute(args));
 }

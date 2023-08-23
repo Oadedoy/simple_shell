@@ -13,3 +13,19 @@ size_t custom_strlen(const char *str) {
     }
     return len;
 }
+
+/**
+ * print_environment - function that prints current environment.
+ *
+ * Return: nothing.
+ */
+void print_environment()
+{
+    char **env = environ;
+
+    while (*env != NULL)
+    {
+        printf("%s\n", *env);
+        env++;
+    }
+}

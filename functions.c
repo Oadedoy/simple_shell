@@ -17,25 +17,6 @@ int my_exit(char **args)
 	exit(0);
 }
 
-/**
- * _env - fuction that prints environment variable
- * @args: command
- * Return: result
- */
-
-int _env(char **args)
-{
-	int x = 0;
-	char *env_var;
-
-	while ((env_var = getenv(args[x])) != NULL)
-	{
-		printf("%s\n", env_var);
-		x++;
-	}
-
-	return (0);
-}
 
 /**
  * _help - function that display help message

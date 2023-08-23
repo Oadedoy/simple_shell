@@ -16,7 +16,7 @@ int execute_args(char **args)
 	};
 	int (*builtin_func[])(char **) = {
 		&_cd,
-        &_env,
+        &print_environment,
 		&_help,
 		&my_exit,
 	};

@@ -22,7 +22,7 @@ int execute(char **args);
 char *read_stream(void);
 int _cd(char **args);
 int my_exit(char **args);
-int _env(char **args);
+void print_environment();
 int _help(char **args);
 
 #endif

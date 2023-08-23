@@ -18,7 +18,7 @@ int execute_args(char **args)
         &_cd,
         &_env,
 		&_help,
-		&_exit,
+		&my_exit,
 	};
 	unsigned int i;
 

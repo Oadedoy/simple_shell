@@ -8,10 +8,12 @@
 
 int my_exit(char **args)
 {
+	int exitcode;
+	
 	if (args[1] != NULL)
 	{
 		free(args);
-		int exitcode = atoi(args[1]);
+		exitcode = atoi(args[1]);
 
 		exit(exitcode);
 	}

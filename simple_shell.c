@@ -1,6 +1,10 @@
 #include "shell.h"
 
-#define MAX_COMMAND_LENGTH 100
+/**
+ * main - Runs a simple UNIX command interpreter.
+ *
+ * Return: The return value of the last executed command.
+ */
 
 int main() {
     char *command = NULL;

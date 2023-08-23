@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+#define MAX_COMMAND_LENGTH 100
+
 /*Function prototypes*/
 void tokenize(char *input, char **args, size_t args_size);
 void execute(char **args);

@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * execute - Executes a command in a child process.
+ * @args: An array of arguments.
+ *
+ * Return: If an error occurs - a corresponding error code.
+ *         if sucessful - The exit value of the last executed command.
+ */
 void execute(char **args) {
     pid_t pid;
     

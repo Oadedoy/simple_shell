@@ -10,6 +10,7 @@ int my_exit(char **args)
 {
 	if (args[1] != NULL)
 	{
+		free(args);
 		int exitcode = atoi(args[1]);
 
 		exit(exitcode);

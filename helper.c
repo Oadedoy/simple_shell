@@ -17,9 +17,9 @@ size_t custom_strlen(const char *str) {
 /**
  * print_environment - function that prints current environment.
  *
- * Return: nothing.
+ * Return: 0 on success.
  */
-void print_environment()
+int print_environment()
 {
     char **env = environ;
 

@@ -1,23 +1,44 @@
 #include "shell.h"
 
 /**
- * tokenize - Tokenizes a string.
- * @input: The string.
- * @args: list of arguments.
- * @arg_size: size of arguments.
- *
- * Return: A pointer to an array containing the tokenized words.
+ * tokenize - split a string into multiple strings
+ * @ptr: the string to be slited.
+ * Return: result
  */
-void tokenize(char *input, char **args, size_t args_size) {
-    size_t arg_count = 0;
-    char *token;
-    
-    token = strtok(input, " ");
 
-    while (token != NULL && arg_count < args_size - 1) {
-        args[arg_count++] = token;
-        token = strtok(NULL, " ");
-    }
+char **tokenize(char *ptr)
+{
+	int bufsize = 64;
+	int x = 0;
+	char **tokens = malloc(bufsize * sizeof(char *));
+	char *str;
 
-    args[arg_count] = NULL;
+	if (!tokens)
+	{
+		fprintf(stderr, "allocate error in split_line: tokens\n");
+		exit(EXIT_FAILURE);
+	}
+	str = strtok(ptr, _DELIMITER);
+	while (str != NULL)
+	{
+		if (str[0] == '#')
+		{
+			break;
+		}
+		tokens[x] = str;
+		x++;
+		if (x >= bufsize)
+		{
+			bufsize += bufsize;
+			tokens = realloc(tokens, bufsize * sizeof(char));
+			if (!tokens)
+			{
+				fprintf(stderr, "reallocation error in split_line: tokensn");
+				exit(EXIT_FAILURE);
+			}
+		}
+		str = strtok(NULL, _DELIMITER);
+	}
+	tokens[x] = NULL;
+	return (tokens);
 }

@@ -1,47 +1,35 @@
 #include "shell.h"
 
 /**
- * execute - Executes a command in a child process.
- * @args: An array of arguments.
- *
- * Return: If an error occurs - a corresponding error code.
- *         if sucessful - The exit value of the last executed command.
+ * execute - function that create a new process
+ *             and execute commands
+ * @args: arrays of strings
+ * Return: 1 (success) , 0(fails)
  */
-void execute(char **args)
+
+int execute(char **args)
 {
-    pid_t pid;
-    
-    pid = fork();
-    
-    if (pid == -1)
-    {
-        perror("fork");
-    }
-    else if (pid == 0)
-    {
-        int exec_result = execve(args[0], args, NULL);
+	pid_t _pid;
+	int status;
 
-        if (exec_result == -1)
-        {
-            perror("execve");
-            exit(EXIT_FAILURE);
-        }
-    }
-    else
-    {
-        int status;
-        waitpid(pid, &status, 0);
-
-        if (WIFEXITED(status))
-        {
-            if (WEXITSTATUS(status) != 0)
-            {
-                printf("Command failed with exit status %d\n", WEXITSTATUS(status));
-            }
-        }
-        else if (WIFSIGNALED(status))
-        {
-            printf("Command terminated by signal %d\n", WTERMSIG(status));
-        }
-    }
+	_pid = fork();
+	if (_pid == 0)
+	{
+		if (execvp(args[0], args) == -1)
+		{
+			perror("error in new_process: child process");
+		}
+		exit(EXIT_FAILURE);
+	}
+	else if (_pid < 0)
+	{
+		perror("error in new_process: forking");
+	}
+	else
+	{
+		do {
+			waitpid(_pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
+	return (-1);
 }

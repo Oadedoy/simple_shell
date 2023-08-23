@@ -21,7 +21,7 @@ int execute_args(char **args);
 int execute(char **args);
 char *read_stream(void);
 int _cd(char **args);
-int _exit(char **args);
+int my_exit(char **args);
 int _env(char **args);
 int _help(char **args);
 

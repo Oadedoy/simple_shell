@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _exit - function that exit or terminate the shell
+ * my_exit - function that exit or terminate the shell
  * @args: command
  * Return: result
  */
 
-int _exit(char **args)
+int my_exit(char **args)
 {
 	if (args[1] != NULL)
 	{
